@@ -65,3 +65,10 @@ class IngredientsPizza(generics.ListAPIView):
         queryset = Ingredient.objects.filter(state = 1, pizza = pk)
         serializer = IngredientSerializer(queryset, many=True)
         return Response(serializer.data)
+
+class Information(generics.ListAPIView):
+    def list(self, request):
+        pizza = Pizza.objects.filter(state = 1).count()
+        sales = DetailSale.objects.filter(state = 1).count()
+        client = Sale.objects.filter(state = 1).count()
+        return Response({"pizza" : pizza,"sales" : sales,"client" : client})

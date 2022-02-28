@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .api.viewsets import PizzaAdd,Pizzalist, SaleAdd,SaleList, IngredientsPizza
+from .api.viewsets import PizzaAdd,Pizzalist, SaleAdd,SaleList, IngredientsPizza,Information
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path("pizza/<int:pk>/ingredients", IngredientsPizza.as_view(), name=None),
     path('sale', SaleList.as_view(), name=None),
     path('sale/add', SaleAdd.as_view(), name=None),
+    path('sale/information', Information.as_view(), name=None),
 ]

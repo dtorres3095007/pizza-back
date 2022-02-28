@@ -31,3 +31,26 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.state
+
+class Sale(models.Model):
+    client = models.TextField()
+    phone = models.TextField()
+    price  = models.IntegerField()
+    date  = models.TextField()
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_delete = models.DateTimeField(blank=True, null=True)
+    state = models.CharField(choices=[("1", "Active"), ("0", "Inactive")], default="1", max_length=10)
+
+    def __str__(self):
+        return self.state
+
+class DetailSale(models.Model):
+    sale = models.ForeignKey('pizzas.Sale', on_delete=models.PROTECT, related_name='sale_detail')
+    pizza = models.ForeignKey('pizzas.pizza', on_delete=models.PROTECT, related_name='pizza_sale')
+    price  = models.IntegerField()
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_delete = models.DateTimeField(blank=True, null=True)
+    state = models.CharField(choices=[("1", "Active"), ("0", "Inactive")], default="1", max_length=10)
+
+    def __str__(self):
+        return self.state

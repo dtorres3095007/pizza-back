@@ -6,7 +6,7 @@ Antes de iniciar se debe instalar [python](https://www.python.org/downloads/).
 
 #### 1 ) Preparar maquina
 
-Instalar Dgango
+Instalar Django
 ```bash
 python -m pip install django
 ```
